@@ -10,11 +10,32 @@
     gap: 16px;
     margin: 30px 0px;
 
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
     &:hover {
       color: var(--blue);
     }
     svg {
       color: var(--blue);
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .menu {
+    padding: 5px 5px;
+
+    ul {
+      display: flex;
+      li {
+        gap: 10px;
+      }
     }
   }
 }

@@ -8,12 +8,14 @@ function Menu() {
     <div className={styles.menu}>
       <ul>
         <li>
-          <AiFillHome />
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <AiFillHome /> Home
+          </Link>
         </li>
         <li>
-          <AiFillInfoCircle />
-          <Link to="/about">About</Link>
+          <Link to="/about">
+            <AiFillInfoCircle /> About
+          </Link>
         </li>
       </ul>
     </div>

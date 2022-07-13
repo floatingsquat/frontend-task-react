@@ -5,3 +5,10 @@
   padding: 30px;
   background-color: var(--gray);
 }
+
+@media (max-width: 1180px) {
+  .navbar {
+    display: none;
+    flex-direction: row;
+  }
+}

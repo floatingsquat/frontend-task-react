@@ -7,8 +7,15 @@
   border-radius: 22px;
   overflow: hidden;
   background-color: var(--white);
+  margin-top: 50px;
 
   main {
     width: 100%;
+  }
+
+  @media (max-width: 1180px) {
+    main {
+      margin-left: 35px;
+    }
   }
 }
