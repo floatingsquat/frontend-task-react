@@ -4,11 +4,10 @@ import FilterBox from "./FilterBox";
 import SearchBox from "./SearchBox";
 function Header() {
   return (
-    <>
-      <h2>Tarfin JS Task</h2>
+    <div className={styles.header}>
       <FilterBox />
       <SearchBox />
-    </>
+    </div>
   );
 }
 
