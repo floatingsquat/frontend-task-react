@@ -1,15 +1,7 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <img src="https://tarfin.com/img/logo.svg" alt="Tarfin Logo" />
-    </div>
-  )
+  return <div className="App">Tarfin</div>;
 }
 
-export default App
+export default App;
