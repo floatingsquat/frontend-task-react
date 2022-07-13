@@ -1,6 +1,5 @@
 .layout {
   display: flex;
-  gap: 50px;
   max-width: 1180px;
   width: 100%;
   margin: auto;
@@ -10,6 +9,7 @@
   margin-top: 50px;
 
   main {
+    padding: 30px;
     width: 100%;
   }
 
