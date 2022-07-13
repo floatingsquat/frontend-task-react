@@ -1,4 +1,4 @@
-import { allEvents } from "../config/api";
+import { eventListBySearch } from "../config/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,8 +8,8 @@ const initialState = {
   searchQuery: "",
 };
 
-export const getEvents = createAsyncThunk("events/getEvents", async () => {
-  const res = await axios(allEvents());
+export const getEvents = createAsyncThunk("events/getEvents", async (q) => {
+  const res = await axios(eventListBySearch(q));
   return res.data;
 });
 
