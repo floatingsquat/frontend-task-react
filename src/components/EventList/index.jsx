@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../Pagination";
 function EventList() {
-  const { items, isLoading } = useSelector((state) => state.event);
+  const { items, isLoading, searchQuery } = useSelector((state) => state.event);
+
   const eventItems = items["_embedded"]?.events;
   const totalPages = items.page?.totalPages;
   const size = items.page?.size;
@@ -14,33 +15,31 @@ function EventList() {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const data = {
-      searchQuery: "football",
-      page: 1,
-    };
-    dispatch(getEvents(data));
-    //console.log(items["_embedded"].events);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getEvents({ searchQuery: searchQuery }));
+  //   //console.log(items["_embedded"].events);
+  // }, []);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
 
-  return (
+  return searchQuery ? (
     <>
+      {" "}
       <div className={styles.eventList}>
         {eventItems?.map((item) => (
           <EventItem {...item} key={item.id} />
         ))}
       </div>
-
       <Pagination
         totalPages={safeTotalPageCount}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
     </>
+  ) : (
+    <h4>Try to type something...</h4>
   );
 }
 

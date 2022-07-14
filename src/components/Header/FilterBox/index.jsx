@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./styles.module.scss";
 function FilterBox() {
   return (
-    <input
-      type="text"
-      className={styles.filter}
-      placeholder="Search an event..."
-    />
+    <select className={styles.sorting}>
+      <option value="test">Category</option>
+      <option value="test1">Test 1</option>
+      <option value="test2">Test 2</option>
+    </select>
   );
 }
 

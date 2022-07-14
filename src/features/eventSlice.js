@@ -5,7 +5,7 @@ import axios from "axios";
 const initialState = {
   items: [],
   isLoading: [],
-  searchQuery: "",
+  searchQuery: "football",
 };
 
 export const getEvents = createAsyncThunk("events/getEvents", async (data) => {

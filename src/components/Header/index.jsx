@@ -5,8 +5,8 @@ import SearchBox from "./SearchBox";
 function Header() {
   return (
     <div className={styles.header}>
-      <FilterBox />
       <SearchBox />
+      <FilterBox />
     </div>
   );
 }
