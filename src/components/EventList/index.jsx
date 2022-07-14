@@ -8,12 +8,15 @@ function EventList() {
   const { items, isLoading } = useSelector((state) => state.event);
   const eventItems = items["_embedded"]?.events;
   const totalPages = items.page?.totalPages;
+  const size = items.page?.size;
+  const safeTotalPageCount =
+    totalPages * size > 1000 ? 1000 / size : totalPages; // because "API Limits Exceeded: Max paging depth exceeded. (page * size) must be less than 1,000"
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const data = {
-      searchQuery: "cinema",
+      searchQuery: "football",
       page: 1,
     };
     dispatch(getEvents(data));
@@ -33,7 +36,7 @@ function EventList() {
       </div>
 
       <Pagination
-        totalPages={totalPages}
+        totalPages={safeTotalPageCount}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />

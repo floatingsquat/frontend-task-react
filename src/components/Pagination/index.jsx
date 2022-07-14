@@ -1,6 +1,3 @@
-import { current } from "@reduxjs/toolkit";
-import React from "react";
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getEvents } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
@@ -23,11 +20,9 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
   };
 
   const pageChangeHandler = (page) => {
-    //console.log(page);
     setCurrentPage(page);
-    //console.log(currentButton);
     const data = {
-      searchQuery: "cinema",
+      searchQuery: "football",
       page: page,
     };
     dispatch(getEvents(data));
@@ -36,12 +31,7 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
 
   return (
     <div className={styles.pagination}>
-      <button
-        className={`${
-          currentPage === numOfPages.length ? styles.disabled : styles.prev
-        }`}
-        onClick={goPrev}
-      >
+      <button disabled={currentPage === 1 && true} onClick={goPrev}>
         Previous
       </button>
 
@@ -52,10 +42,8 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
       ))}
 
       <button
+        disabled={currentPage === numOfPages.length && true}
         onClick={goNext}
-        className={`${
-          currentPage === numOfPages.length ? styles.disabled : styles.next
-        }`}
       >
         Next
       </button>
