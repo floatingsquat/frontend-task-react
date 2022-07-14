@@ -7,10 +7,16 @@ import Pagination from "../Pagination";
 function EventList() {
   const { items, isLoading } = useSelector((state) => state.event);
   const eventItems = items["_embedded"]?.events;
+  const totalPages = items.page?.totalPages;
+  const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEvents("cinema"));
+    const data = {
+      searchQuery: "cinema",
+      page: 1,
+    };
+    dispatch(getEvents(data));
     //console.log(items["_embedded"].events);
   }, []);
 
@@ -26,7 +32,11 @@ function EventList() {
         ))}
       </div>
 
-      <Pagination />
+      <Pagination
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 }

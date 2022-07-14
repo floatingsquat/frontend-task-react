@@ -8,8 +8,10 @@ const initialState = {
   searchQuery: "",
 };
 
-export const getEvents = createAsyncThunk("events/getEvents", async (q) => {
-  const res = await axios(eventListBySearch(q));
+export const getEvents = createAsyncThunk("events/getEvents", async (data) => {
+  let searchQuery = data.searchQuery;
+  let page = data.page;
+  const res = await axios(eventListBySearch(searchQuery, page));
   return res.data;
 });
 
@@ -28,6 +30,7 @@ const eventSlice = createSlice({
     },
     [getEvents.fulfilled]: (state, action) => {
       state.isLoading = false;
+      //console.log(action.payload);
       state.items = action.payload;
     },
     [getEvents.rejected]: (state) => {
