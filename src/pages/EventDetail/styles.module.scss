@@ -1,0 +1,13 @@
+.eventDetail {
+  .map {
+    font-size: 120px;
+    color: #4caf50;
+    -webkit-animation: load 1s infinite;
+    animation: load 1s infinite;
+  }
+
+  .iframeWrapper {
+    position: relative;
+    cursor: default;
+  }
+}

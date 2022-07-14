@@ -1,4 +1,4 @@
-import { eventListBySearch } from "../config/api";
+import { eventListBySearch, getEventById } from "../config/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -15,6 +15,14 @@ export const getEvents = createAsyncThunk("events/getEvents", async (data) => {
   return res.data;
 });
 
+export const getEventDetails = createAsyncThunk(
+  "events/getEventDetails",
+  async (id) => {
+    const res = await axios(getEventById(id));
+    return res.data;
+  }
+);
+
 const eventSlice = createSlice({
   name: "event",
   initialState,
@@ -30,10 +38,23 @@ const eventSlice = createSlice({
     },
     [getEvents.fulfilled]: (state, action) => {
       state.isLoading = false;
-      //console.log(action.payload);
+
       state.items = action.payload;
     },
     [getEvents.rejected]: (state) => {
+      state.isLoading = false;
+    },
+
+    // For event detail
+    [getEventDetails.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getEventDetails.fulfilled]: (state, action) => {
+      state.isLoading = false;
+
+      state.eventDetails = action.payload;
+    },
+    [getEventDetails.rejected]: (state) => {
       state.isLoading = false;
     },
   },
