@@ -1,4 +1,4 @@
-import { eventListBySearch, getEventById } from "../config/api";
+import { eventListBySearch, eventDetailsById } from "../config/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -18,7 +18,7 @@ export const getEvents = createAsyncThunk("events/getEvents", async (data) => {
 export const getEventDetails = createAsyncThunk(
   "events/getEventDetails",
   async (id) => {
-    const res = await axios(getEventById(id));
+    const res = await axios(eventDetailsById(id));
     return res.data;
   }
 );
