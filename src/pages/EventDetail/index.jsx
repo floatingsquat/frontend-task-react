@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { getEventDetails } from "../../features/eventSlice";
+import { formatDate } from "../../helpers/formatDate";
 import styles from "./styles.module.scss";
 function EventDetail() {
   const { id } = useParams();
@@ -45,7 +46,7 @@ function EventDetail() {
           </div>
           <div className={styles.tagWrapper}>
             <span className={styles.date}>
-              {eventDetails["userData"]?.dates.start.localDate}
+              {formatDate(eventDetails["userData"]?.dates.start.localDate)}
             </span>
             {eventDetails["userData"]?.dates.start.localTime && (
               <span className={styles.time}>
