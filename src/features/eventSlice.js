@@ -34,6 +34,11 @@ const eventSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+    setFilterItems: (state, action) => {
+      //console.log(action.payload);
+
+      state.items["_embedded"].events = action.payload;
+    },
   },
   extraReducers: {
     // For fetching events
@@ -42,7 +47,7 @@ const eventSlice = createSlice({
     },
     [getEvents.fulfilled]: (state, action) => {
       state.isLoading = false;
-
+      console.log(action.payload);
       state.items = action.payload;
     },
     [getEvents.rejected]: (state) => {
@@ -64,5 +69,5 @@ const eventSlice = createSlice({
   },
 });
 
-export const { setSearchQuery } = eventSlice.actions;
+export const { setSearchQuery, setFilterItems } = eventSlice.actions;
 export default eventSlice.reducer;

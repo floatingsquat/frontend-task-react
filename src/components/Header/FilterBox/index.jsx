@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { ascendingSort, descendingSort } from "../../../helpers/sort";
+import { setFilterItems } from "../../../features/eventSlice";
 function FilterBox() {
-  const [filter, setFilter] = useState("featured"); // TODO: Constant -->  Default (0): Featured, 1 Ascending, 2 Descending
-  //const filterVal =filter === 0 ? "featured" : filter === 1 ? "ascending" : "descending";
+  const [filter, setFilter] = useState(0); // TODO: Constant -->  Default (0): Filter with, 1 Ascending, 2 Descending
   const dispatch = useDispatch();
   const { items, isLoading, searchQuery } = useSelector((state) => state.event);
-  const onChangeFilterHandler = (e) => {
-    //console.log(e.target.value);
-    setFilter(e.target.value);
 
+  const onChangeFilterHandler = (e) => {
+    setFilter(e.target.value);
+    const eventList = items["_embedded"].events;
     if (e.target.value === "ascending") {
-      // console.log("Alphabetical:", arr.sort((a,b) => a.name > b.name));
-      // console.log("Reversed:", arr.sort((a,b) => a.name < b.name));
-      const eventList = items["_embedded"].events;
-      console.log(eventList[0].sort((a, b) => a.name.localeCompare(b.name)));
+      dispatch(setFilterItems(ascendingSort(eventList)));
+    } else if (e.target.value === "descending") {
+      dispatch(setFilterItems(descendingSort(eventList)));
+    } else {
     }
   };
 
@@ -25,7 +26,9 @@ function FilterBox() {
       value={filter}
       className={styles.sorting}
     >
-      <option value="featured">Featured</option>
+      <option disabled value="0">
+        Filter with:
+      </option>
       <option value="ascending">Ascending</option>
       <option value="descending">Descending</option>
     </select>

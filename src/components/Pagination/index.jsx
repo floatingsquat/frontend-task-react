@@ -17,15 +17,9 @@ function Pagination({
   const { searchQuery } = useSelector((state) => state.event);
 
   const [pages, setPages] = useState([]);
-  console.log("pages", pages);
   useEffect(() => {
-    console.log("total pages", totalPages);
     setPages(Array.from(Array(totalPages).keys()));
   }, []);
-
-  useEffect(() => {
-    console.log("pageRange: ", pageRange);
-  }, [pageRange]);
 
   const changePage = (index) => {
     setCurrentPage(index);
@@ -34,7 +28,6 @@ function Pagination({
 
   const renderPaginationItem = (page) => {
     if (page <= pageRange && page > pageRange - 5) {
-      console.log("string ", { currentPage, pageRange });
       return (
         <button
           className={`${styles.page} ${
@@ -62,7 +55,6 @@ function Pagination({
 
   const handleNext = () => {
     if (currentPage + 1 > pageRange) {
-      console.log({ currentPage, pageRange });
       setPageRange(pageRange + DEFAULT_PAGE_RANGE);
     }
 
