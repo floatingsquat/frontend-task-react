@@ -8,11 +8,11 @@
   }
 
   .page {
-    background-color: var(--light-gray);
+    background-color: var(--gray);
     padding: 10px;
     margin: 3px;
   }
   .active {
-    background-color: red;
+    background-color: var(--light-gray);
   }
 }

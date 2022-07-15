@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../Pagination";
 function EventList() {
   const { items, isLoading, searchQuery } = useSelector((state) => state.event);
-
+  const DEFAULT_PAGE_RANGE = 5;
+  const DEFAULT_PAGE = 1;
   const eventItems = items["_embedded"]?.events;
   const totalPages = items.page?.totalPages;
   const size = items.page?.size;
   const safeTotalPageCount =
     totalPages * size > 1000 ? 1000 / size : totalPages; // because "API Limits Exceeded: Max paging depth exceeded. (page * size) must be less than 1,000"
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageRange, setPageRange] = useState(DEFAULT_PAGE_RANGE);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -36,6 +38,8 @@ function EventList() {
         totalPages={safeTotalPageCount}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
+        pageRange={pageRange}
+        setPageRange={setPageRange}
       />
     </>
   ) : (

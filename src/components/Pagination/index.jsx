@@ -4,12 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
 
-const DEFAULT_PAGE_RANGE = 5;
-const DEFAULT_PAGE = 1;
-
-function Pagination({ totalPages, setCurrentPage, currentPage }) {
+function Pagination({
+  totalPages,
+  setCurrentPage,
+  currentPage,
+  pageRange,
+  setPageRange,
+}) {
+  const DEFAULT_PAGE = 1;
+  const DEFAULT_PAGE_RANGE = 5;
   const dispatch = useDispatch();
   const { searchQuery } = useSelector((state) => state.event);
+
   const [pages, setPages] = useState([]);
   console.log("pages", pages);
   useEffect(() => {
@@ -17,7 +23,6 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
     setPages(Array.from(Array(totalPages).keys()));
   }, []);
 
-  const [pageRange, setPageRange] = useState(DEFAULT_PAGE_RANGE);
   useEffect(() => {
     console.log("pageRange: ", pageRange);
   }, [pageRange]);
