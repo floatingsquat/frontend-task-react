@@ -20,17 +20,43 @@ function EventDetail() {
     <div className={styles.eventDetail}>
       <div className={styles.iframeWrapper}>
         <iframe
-          class="shadow mb-0 mt-0 map"
           //52.8488733, 13.67978
           src={mapUrl}
-          frameborder="0"
+          frameBorder="0"
           width="100%"
-          height="300"
+          height="500"
           scrolling="no"
         ></iframe>
       </div>
 
-      <h2>{eventDetails["userData"]?.name}</h2>
+      <div className={styles.infoWrapper}>
+        <img
+          className={styles.eventImage}
+          src={eventDetails["userData"]?.images[0].url}
+        />
+        <div className={styles.info}>
+          <h3>{eventDetails["userData"]?.name}</h3>
+
+          <div className={styles.locationInfo}>
+            {eventDetails["location"]?.country.name},{" "}
+            {eventDetails["location"]?.city.name},{" "}
+            {eventDetails["location"]?.address.line1}
+          </div>
+          <div className={styles.tagWrapper}>
+            <span className={styles.date}>
+              {eventDetails["userData"]?.dates.start.localDate}
+            </span>
+            {eventDetails["userData"]?.dates.start.localTime && (
+              <span className={styles.time}>
+                {eventDetails["userData"]?.dates.start.localTime}
+              </span>
+            )}
+            <span className={styles.genre}>
+              {eventDetails["userData"]?.classifications[0].genre.name}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
