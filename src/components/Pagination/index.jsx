@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { current } from "@reduxjs/toolkit";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
 
-function Pagination({ totalPages, setCurrentPage, currentPage }) {
-  const Pages = [];
-  const DEFAULT_PAGE_RANGE = 5;
-  const DEFAULT_PAGE = 1;
+const DEFAULT_PAGE_RANGE = 5;
+const DEFAULT_PAGE = 1;
 
+function Pagination({ totalPages, setCurrentPage, currentPage }) {
   const dispatch = useDispatch();
   const { searchQuery } = useSelector((state) => state.event);
-  for (let i = 1; i < totalPages; i++) {
-    Pages.push(i);
-  }
+  const [pages, setPages] = useState([]);
+  console.log("pages", pages);
+  useEffect(() => {
+    console.log("total pages", totalPages);
+    setPages(Array.from(Array(totalPages).keys()));
+  }, []);
 
   const [pageRange, setPageRange] = useState(DEFAULT_PAGE_RANGE);
+  useEffect(() => {
+    console.log("pageRange: ", pageRange);
+  }, [pageRange]);
 
   const changePage = (index) => {
     setCurrentPage(index);
@@ -23,9 +29,12 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
 
   const renderPaginationItem = (page) => {
     if (page <= pageRange && page > pageRange - 5) {
+      console.log("string ", { currentPage, pageRange });
       return (
         <button
-          className={styles.page}
+          className={`${styles.page} ${
+            page === currentPage ? styles.active : ""
+          }`}
           onClick={() => changePage(page)}
           key={page}
         >
@@ -40,22 +49,20 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
   const handlePrevious = () => {
     if (currentPage - 1 <= pageRange - DEFAULT_PAGE_RANGE) {
       setPageRange(pageRange - DEFAULT_PAGE_RANGE);
-      console.log("prev range tetiklenmesi gerek");
     }
-    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
 
     setCurrentPage(currentPage - 1);
-    console.log("buraya geliyor prev", currentPage);
+    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
   };
 
   const handleNext = () => {
     if (currentPage + 1 > pageRange) {
+      console.log({ currentPage, pageRange });
       setPageRange(pageRange + DEFAULT_PAGE_RANGE);
-      console.log("next range tetiklenmesi gerek");
     }
-    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
+
     setCurrentPage(currentPage + 1);
-    console.log("buraya geliyor next", currentPage);
+    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
   };
   return (
     <div className={styles.pagination}>
@@ -65,9 +72,9 @@ function Pagination({ totalPages, setCurrentPage, currentPage }) {
         Previous
       </button>
 
-      {Pages.map((page) => renderPaginationItem(page))}
+      {pages.map((page) => renderPaginationItem(page))}
 
-      <button disabled={currentPage === Pages.length} onClick={handleNext}>
+      <button disabled={currentPage === pages.length} onClick={handleNext}>
         Next
       </button>
     </div>
