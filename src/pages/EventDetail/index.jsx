@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Spinner from "../../components/Spinner";
 import { getEventDetails } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
 function EventDetail() {
@@ -12,7 +13,7 @@ function EventDetail() {
     dispatch(getEventDetails(id));
   }, []);
   if (isLoading) {
-    <h2>Loading...</h2>;
+    return <Spinner />; // ????
   }
   const mapUrl = `https://maps.google.com/maps?&hl=en&q=${eventDetails["location"]?.location?.latitude}, ${eventDetails["location"]?.location?.longitude}&ie=UTF8&output=embed`;
 

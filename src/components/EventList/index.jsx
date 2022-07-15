@@ -4,6 +4,7 @@ import { getEvents } from "../../features/eventSlice";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../Pagination";
+import Spinner from "../Spinner";
 function EventList() {
   const { items, isLoading, searchQuery } = useSelector((state) => state.event);
   const DEFAULT_PAGE_RANGE = 5;
@@ -23,7 +24,7 @@ function EventList() {
   // }, []);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <Spinner />;
   }
 
   return searchQuery ? (

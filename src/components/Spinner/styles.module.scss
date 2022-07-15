@@ -1,0 +1,15 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
