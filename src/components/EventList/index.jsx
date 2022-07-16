@@ -24,7 +24,15 @@ function EventList() {
     return <Spinner />;
   }
 
-  return searchQuery ? (
+  return !searchQuery || !eventItems ? (
+    <>
+      <h4>Nothing found!</h4>{" "}
+      <small>
+        You may be leaving it blank or what you are looking for does not
+        actually exist.
+      </small>{" "}
+    </>
+  ) : (
     <>
       {" "}
       <div className={styles.eventList}>
@@ -40,8 +48,6 @@ function EventList() {
         setPageRange={setPageRange}
       />
     </>
-  ) : (
-    <h4>Try to type something...</h4>
   );
 }
 

@@ -11,7 +11,6 @@ const initialState = {
   items: [],
   eventDetails: [],
   isLoading: [],
-  error: false,
   filterMode: DEFAULT_FILTER_MODE_SEARCH_WITH,
   searchQuery: DEFAULT_SEARCH_QUERY,
   activeMenu: DEFAULT_ACTIVE_MENU_ITEM_HOME,
@@ -82,7 +81,6 @@ const eventSlice = createSlice({
     },
     [getEventDetails.rejected]: (state) => {
       state.isLoading = false;
-      state.error = true;
     },
   },
 });
