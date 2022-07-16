@@ -42,11 +42,13 @@ function EventDetail() {
           <div className={styles.locationInfo}>
             {eventDetails["location"]?.country.name},{" "}
             {eventDetails["location"]?.city.name},{" "}
-            {eventDetails["location"]?.address.line1}
+            {eventDetails["location"]?.address &&
+              eventDetails["location"]?.address.line1}
           </div>
           <div className={styles.tagWrapper}>
             <span className={styles.date}>
-              {formatDate(eventDetails["userData"]?.dates?.start?.localDate)}
+              {eventDetails["userData"]?.dates?.start &&
+                formatDate(eventDetails["userData"]?.dates?.start?.localDate)}
             </span>
             {eventDetails["userData"]?.dates.start.localTime && (
               <span className={styles.time}>

@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { ascendingSort, descendingSort } from "../../../helpers/sort";
-import { setFilterItems } from "../../../features/eventSlice";
+import { setFilterItems, setFilterMode } from "../../../features/eventSlice";
 function FilterBox() {
-  const [filter, setFilter] = useState(0); // TODO: Constant -->  Default (0): Filter with, 1 Ascending, 2 Descending
+  //const [filter, setFilter] = useState(0); // TODO: Constant -->  Default (0): Filter with, 1 Ascending, 2 Descending
   const dispatch = useDispatch();
-  const { items, isLoading, searchQuery } = useSelector((state) => state.event);
+  const { items, isLoading, searchQuery, filterMode } = useSelector(
+    (state) => state.event
+  );
 
   const onChangeFilterHandler = (e) => {
-    setFilter(e.target.value);
+    dispatch(setFilterMode(e.target.value));
     const eventList = items["_embedded"].events;
     if (e.target.value === "ascending") {
       dispatch(setFilterItems(ascendingSort(eventList)));
@@ -23,7 +25,7 @@ function FilterBox() {
     <select
       name="filterr"
       onChange={onChangeFilterHandler}
-      value={filter}
+      value={filterMode}
       className={styles.sorting}
     >
       <option disabled value="0">

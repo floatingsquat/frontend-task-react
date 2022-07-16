@@ -15,7 +15,8 @@ function EventItem({ name, dates, id }) {
           {dayOfDate(dates.start.localDate)}
         </div>
         <small>
-          {monthNameOfDate(dates.start?.localDate).toLocaleUpperCase()}
+          {monthNameOfDate(dates.start?.localDate) &&
+            monthNameOfDate(dates.start?.localDate).toLocaleUpperCase()}
         </small>
       </div>
       <div className={styles.eventTitle}>{name}</div>

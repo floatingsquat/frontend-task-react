@@ -6,6 +6,7 @@ const initialState = {
   items: [],
   eventDetails: [],
   isLoading: [],
+  filterMode: 0,
   searchQuery: "football",
 };
 
@@ -33,6 +34,9 @@ const eventSlice = createSlice({
   reducers: {
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+    },
+    setFilterMode: (state, action) => {
+      state.filterMode = action.payload;
     },
     setFilterItems: (state, action) => {
       //console.log(action.payload);
@@ -68,5 +72,6 @@ const eventSlice = createSlice({
   },
 });
 
-export const { setSearchQuery, setFilterItems } = eventSlice.actions;
+export const { setSearchQuery, setFilterMode, setFilterItems } =
+  eventSlice.actions;
 export default eventSlice.reducer;

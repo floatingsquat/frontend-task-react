@@ -18,11 +18,6 @@ function EventList() {
   const [pageRange, setPageRange] = useState(DEFAULT_PAGE_RANGE);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getEvents({ searchQuery: searchQuery }));
-  //   //console.log(items["_embedded"].events);
-  // }, []);
-
   if (isLoading) {
     return <Spinner />;
   }

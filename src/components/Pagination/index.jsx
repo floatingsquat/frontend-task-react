@@ -23,7 +23,7 @@ function Pagination({
 
   const changePage = (index) => {
     setCurrentPage(index);
-    dispatch(getEvents({ searchQuery: searchQuery, page: index }));
+    dispatch(getEvents({ searchQuery, page: index }));
   };
 
   const renderPaginationItem = (page) => {
@@ -50,7 +50,7 @@ function Pagination({
     }
 
     setCurrentPage(currentPage - 1);
-    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
+    dispatch(getEvents({ searchQuery, page: currentPage + 1 }));
   };
 
   const handleNext = () => {
@@ -59,7 +59,7 @@ function Pagination({
     }
 
     setCurrentPage(currentPage + 1);
-    dispatch(getEvents({ searchQuery: searchQuery, page: currentPage + 1 }));
+    dispatch(getEvents({ searchQuery, page: currentPage + 1 }));
   };
   return (
     <div className={styles.pagination}>

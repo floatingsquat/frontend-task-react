@@ -1,8 +1,9 @@
 import Navbar from "../../components/Navbar";
-import SecMenu from "../../components/SecMenu";
+
 import styles from "./styles.module.scss";
 import { Provider } from "react-redux";
 import { store } from "../../store";
+import Menu from "../../components/Menu";
 
 function MainLayout({ children }) {
   return (
@@ -10,7 +11,7 @@ function MainLayout({ children }) {
       <div className={styles.layout}>
         <Navbar />
         <main>
-          <SecMenu />
+          <Menu type={1} />
           {children}
         </main>
       </div>

@@ -2,7 +2,11 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, setSearchQuery } from "../../../features/eventSlice";
+import {
+  getEvents,
+  setSearchQuery,
+  setFilterMode,
+} from "../../../features/eventSlice";
 
 function SearchBox() {
   const dispatch = useDispatch();
@@ -11,7 +15,7 @@ function SearchBox() {
   useEffect(() => {
     const delayedSearch = setTimeout(() => {
       if (searchQuery) {
-        dispatch(getEvents({ searchQuery: searchQuery }));
+        dispatch(getEvents({ searchQuery }));
       }
     }, 500);
 
@@ -20,6 +24,7 @@ function SearchBox() {
 
   const onChangeHandler = (e) => {
     dispatch(setSearchQuery(e.currentTarget.value));
+    dispatch(setFilterMode(0));
   };
   return (
     <input

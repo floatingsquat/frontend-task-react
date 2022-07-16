@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
+import Logo from "../Logo";
 import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 
-function Menu() {
+function Menu({ type }) {
   const [active, setActive] = useState(0);
   return (
-    <div className={styles.menu}>
+    <div className={type === 0 ? styles.menu : styles.secMenu}>
+      {type === 1 && <Logo />}
       <ul>
         <Link to="/">
           <li

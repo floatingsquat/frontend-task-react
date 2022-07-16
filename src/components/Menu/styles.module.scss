@@ -42,3 +42,42 @@
     }
   }
 }
+
+/* SECMENU */
+
+.secMenu {
+  display: none;
+  flex-direction: row;
+  margin-top: 15px;
+  gap: 15px;
+
+  .active {
+    color: var(--blue);
+  }
+
+  ul {
+    display: flex;
+  }
+
+  a {
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 15px;
+    gap: 10px;
+    flex-shrink: 0;
+    &:hover {
+      color: var(--blue);
+    }
+
+    svg {
+      color: var(--blue);
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .secMenu {
+    display: flex;
+  }
+}
