@@ -14,7 +14,9 @@ function EventDetail() {
   const { isLoading, eventDetails } = useSelector((state) => state.event);
   useEffect(() => {
     dispatch(getEventDetails(id)).then((res) => {
-      res.error && navigate("/404");
+      if (res.error) {
+        navigate("/404");
+      }
     });
   }, []);
 

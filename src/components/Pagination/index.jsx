@@ -56,7 +56,7 @@ function Pagination({
     }
 
     setCurrentPage(currentPage - 1);
-    dispatch(getEvents({ searchQuery, page: currentPage + 1 }));
+    dispatch(getEvents({ searchQuery, page: currentPage - 1 }));
   };
 
   const handleNext = () => {
