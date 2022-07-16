@@ -16,6 +16,8 @@ const DEFAULT_PAGE_RANGE = 5;
 // Event List
 const SIZE_OF_PER_PAGE = 4;
 
+//Searching
+const DEFAULT_SEARCH_QUERY = "football";
 export {
   DEFAULT_FILTER_MODE_SEARCH_WITH,
   SIZE_OF_PER_PAGE,
@@ -27,4 +29,5 @@ export {
   FILTER_MODE_DESCENDING,
   DEFAULT_PAGE,
   DEFAULT_PAGE_RANGE,
+  DEFAULT_SEARCH_QUERY,
 };

@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   DEFAULT_ACTIVE_MENU_ITEM_HOME,
   DEFAULT_FILTER_MODE_SEARCH_WITH,
+  DEFAULT_SEARCH_QUERY,
 } from "../constants";
 
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
   isLoading: [],
   error: false,
   filterMode: DEFAULT_FILTER_MODE_SEARCH_WITH,
-  searchQuery: "football",
+  searchQuery: DEFAULT_SEARCH_QUERY,
   activeMenu: DEFAULT_ACTIVE_MENU_ITEM_HOME,
 };
 

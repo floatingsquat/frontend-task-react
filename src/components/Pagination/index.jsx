@@ -41,6 +41,7 @@ function Pagination({
           }`}
           onClick={() => changePage(page)}
           key={page}
+          disabled={currentPage === page}
         >
           {page}
         </button>
