@@ -1,18 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { getEventDetails } from "../../features/eventSlice";
 import { formatDate } from "../../helpers/formatDate";
 import { locationInfo } from "../../helpers/locationInfo";
 import styles from "./styles.module.scss";
-
+import { Navigate } from "react-router-dom";
 function EventDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, eventDetails } = useSelector((state) => state.event);
   useEffect(() => {
-    dispatch(getEventDetails(id));
+    dispatch(getEventDetails(id)).then((res) => {
+      res.error && navigate("/404");
+    });
   }, []);
 
   if (isLoading) {

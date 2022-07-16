@@ -10,6 +10,7 @@ const initialState = {
   items: [],
   eventDetails: [],
   isLoading: [],
+  error: false,
   filterMode: DEFAULT_FILTER_MODE_SEARCH_WITH,
   searchQuery: "football",
   activeMenu: DEFAULT_ACTIVE_MENU_ITEM_HOME,
@@ -76,12 +77,11 @@ const eventSlice = createSlice({
     },
     [getEventDetails.fulfilled]: (state, action) => {
       state.isLoading = false;
-
       state.eventDetails = action.payload;
     },
     [getEventDetails.rejected]: (state) => {
       state.isLoading = false;
-      console.log("HATAAAAAAAAAAAAAAA FOR REJECTED");
+      state.error = true;
     },
   },
 });
