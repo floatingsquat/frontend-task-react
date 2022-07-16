@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import FilterBox from "./FilterBox";
 import SearchBox from "./SearchBox";

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +6,7 @@ import {
   setSearchQuery,
   setFilterMode,
 } from "../../../features/eventSlice";
+import { DEFAULT_FILTER_MODE_SEARCH_WITH } from "../../../constants";
 
 function SearchBox() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function SearchBox() {
 
   const onChangeHandler = (e) => {
     dispatch(setSearchQuery(e.currentTarget.value));
-    dispatch(setFilterMode(0));
+    dispatch(setFilterMode(DEFAULT_FILTER_MODE_SEARCH_WITH));
   };
   return (
     <input

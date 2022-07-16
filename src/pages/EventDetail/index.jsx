@@ -1,29 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { getEventDetails } from "../../features/eventSlice";
 import { formatDate } from "../../helpers/formatDate";
+import { locationInfo } from "../../helpers/locationInfo";
 import styles from "./styles.module.scss";
 function EventDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { isLoading, eventDetails } = useSelector((state) => state.event);
-
   useEffect(() => {
     dispatch(getEventDetails(id));
   }, []);
+
   if (isLoading) {
-    return <Spinner />; // ????
+    return <Spinner />;
   }
-  const mapUrl = `https://maps.google.com/maps?&hl=en&q=${eventDetails["location"]?.location?.latitude}, ${eventDetails["location"]?.location?.longitude}&ie=UTF8&output=embed`;
 
   return (
     <div className={styles.eventDetail}>
       <div className={styles.iframeWrapper}>
         <iframe
-          //52.8488733, 13.67978
-          src={mapUrl}
+          src={locationInfo(
+            eventDetails["location"]?.location?.latitude,
+            eventDetails["location"]?.location?.longitude
+          )}
           frameBorder="0"
           width="100%"
           height="500"

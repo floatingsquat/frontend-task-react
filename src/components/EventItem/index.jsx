@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import { AiFillCalendar } from "react-icons/ai";
 import { Link } from "react-router-dom";

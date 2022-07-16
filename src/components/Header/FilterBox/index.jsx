@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { ascendingSort, descendingSort } from "../../../helpers/sort";
 import { setFilterItems, setFilterMode } from "../../../features/eventSlice";
 function FilterBox() {
-  //const [filter, setFilter] = useState(0); // TODO: Constant -->  Default (0): Filter with, 1 Ascending, 2 Descending
   const dispatch = useDispatch();
-  const { items, isLoading, searchQuery, filterMode } = useSelector(
-    (state) => state.event
-  );
+  const { items, filterMode } = useSelector((state) => state.event);
 
   const onChangeFilterHandler = (e) => {
     dispatch(setFilterMode(e.target.value));

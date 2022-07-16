@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import EventItem from "../EventItem/";
-import { getEvents } from "../../features/eventSlice";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../Pagination";
