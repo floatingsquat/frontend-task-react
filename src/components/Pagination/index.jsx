@@ -1,6 +1,6 @@
-import { current } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { DEFAULT_PAGE, DEFAULT_PAGE_RANGE } from "../../constants";
 import { getEvents } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
 
@@ -11,8 +11,6 @@ function Pagination({
   pageRange,
   setPageRange,
 }) {
-  const DEFAULT_PAGE = 1;
-  const DEFAULT_PAGE_RANGE = 5;
   const dispatch = useDispatch();
   const { searchQuery } = useSelector((state) => state.event);
 
@@ -63,8 +61,6 @@ function Pagination({
   };
   return (
     <div className={styles.pagination}>
-      {/* <h1>{currentPage}</h1> */}
-
       <button disabled={currentPage === DEFAULT_PAGE} onClick={handlePrevious}>
         Previous
       </button>
