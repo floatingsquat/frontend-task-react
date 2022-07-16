@@ -24,14 +24,34 @@
       gap: 15px;
       width: 80%;
 
-      .tagWrapper {
+      .bottomSection {
         display: flex;
-        gap: 6px;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
 
-        .locationInfo {
+        .buttonWrapper {
+          a {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 12px;
+            border-radius: 15px 0px 0px 15px;
+
+            &:hover {
+              background-color: var(--dark-blue);
+            }
+          }
+        }
+
+        .tagWrapper {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          gap: 6px;
+
+          .locationInfo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
 

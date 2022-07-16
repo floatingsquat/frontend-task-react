@@ -1,13 +1,16 @@
 import { eventListBySearch, eventDetailsById } from "../config/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DEFAULT_ACTIVE_MENU_ITEM_HOME } from "../constants";
+import {
+  DEFAULT_ACTIVE_MENU_ITEM_HOME,
+  DEFAULT_FILTER_MODE_SEARCH_WITH,
+} from "../constants";
 
 const initialState = {
   items: [],
   eventDetails: [],
   isLoading: [],
-  filterMode: 0,
+  filterMode: DEFAULT_FILTER_MODE_SEARCH_WITH,
   searchQuery: "football",
   activeMenu: DEFAULT_ACTIVE_MENU_ITEM_HOME,
 };
@@ -31,6 +34,7 @@ export const getEventDetails = createAsyncThunk(
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
+
       return rejectWithValue(err.response.data);
     }
   }
@@ -50,8 +54,6 @@ const eventSlice = createSlice({
       state.filterMode = action.payload;
     },
     setFilterItems: (state, action) => {
-      //console.log(action.payload);
-
       state.items["_embedded"].events = action.payload;
     },
   },
@@ -79,6 +81,7 @@ const eventSlice = createSlice({
     },
     [getEventDetails.rejected]: (state) => {
       state.isLoading = false;
+      console.log("HATAAAAAAAAAAAAAAA FOR REJECTED");
     },
   },
 });

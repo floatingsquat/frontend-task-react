@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { getEventDetails } from "../../features/eventSlice";
 import { formatDate } from "../../helpers/formatDate";
 import { locationInfo } from "../../helpers/locationInfo";
 import styles from "./styles.module.scss";
+
 function EventDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -32,7 +33,6 @@ function EventDetail() {
           scrolling="no"
         ></iframe>
       </div>
-
       <div className={styles.infoWrapper}>
         <img
           className={styles.eventImage}
@@ -47,22 +47,27 @@ function EventDetail() {
             {eventDetails["location"]?.address &&
               eventDetails["location"]?.address.line1}
           </div>
-          <div className={styles.tagWrapper}>
-            <span className={styles.date}>
-              {eventDetails["userData"]?.dates?.start &&
-                formatDate(eventDetails["userData"]?.dates?.start?.localDate)}
-            </span>
-            {eventDetails["userData"]?.dates.start.localTime && (
-              <span className={styles.time}>
-                {(eventDetails["userData"]?.dates.start.localTime).substring(
-                  0,
-                  (eventDetails["userData"]?.dates.start.localTime).length - 3
-                )}
+          <div className={styles.bottomSection}>
+            <div className={styles.tagWrapper}>
+              <span className={styles.date}>
+                {eventDetails["userData"]?.dates?.start &&
+                  formatDate(eventDetails["userData"]?.dates?.start?.localDate)}
               </span>
-            )}
-            <span className={styles.genre}>
-              {eventDetails["userData"]?.classifications[0].genre.name}
-            </span>
+              {eventDetails["userData"]?.dates.start.localTime && (
+                <span className={styles.time}>
+                  {(eventDetails["userData"]?.dates.start.localTime).substring(
+                    0,
+                    (eventDetails["userData"]?.dates.start.localTime).length - 3
+                  )}
+                </span>
+              )}
+              <span className={styles.genre}>
+                {eventDetails["userData"]?.classifications[0].genre.name}
+              </span>
+            </div>
+            <div className={styles.buttonWrapper}>
+              <Link to="/">Go Back ▶</Link>
+            </div>
           </div>
         </div>
       </div>

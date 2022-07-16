@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DEFAULT_PAGE, DEFAULT_PAGE_RANGE } from "../../constants";
-import { getEvents } from "../../features/eventSlice";
+import {
+  DEFAULT_PAGE,
+  DEFAULT_PAGE_RANGE,
+  DEFAULT_FILTER_MODE_SEARCH_WITH,
+} from "../../constants";
+import { getEvents, setFilterMode } from "../../features/eventSlice";
 import styles from "./styles.module.scss";
 
 function Pagination({
@@ -18,6 +22,10 @@ function Pagination({
   useEffect(() => {
     setPages(Array.from(Array(totalPages).keys()));
   }, []);
+
+  useEffect(() => {
+    dispatch(setFilterMode(DEFAULT_FILTER_MODE_SEARCH_WITH));
+  }, [currentPage]);
 
   const changePage = (index) => {
     setCurrentPage(index);

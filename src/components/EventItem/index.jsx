@@ -1,11 +1,17 @@
 import styles from "./styles.module.scss";
 import { AiFillCalendar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+// import {
+//   dayOfDate,
+//   formatDate,
+//   monthNameOfDate,
+// } from "../../helpers/formatDate";
 import {
   dayOfDate,
   formatDate,
   monthNameOfDate,
 } from "../../helpers/formatDate";
+
 function EventItem({ name, dates, id }) {
   return (
     <div className={styles.eventItem}>
