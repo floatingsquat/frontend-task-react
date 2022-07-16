@@ -12,10 +12,11 @@
     padding: 30px;
     width: 100%;
   }
+}
 
-  @media (max-width: 1180px) {
-    main {
-      margin-left: 35px;
-    }
+@media (max-width: 1180px) {
+  .layout {
+    margin-top: 0px;
+    border-radius: 0px;
   }
 }

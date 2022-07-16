@@ -14,7 +14,9 @@ function EventItem({ name, dates, id }) {
         <div className={styles.numericDate}>
           {dayOfDate(dates.start.localDate)}
         </div>
-        <small>{monthNameOfDate(dates.start?.localDate)}</small>
+        <small>
+          {monthNameOfDate(dates.start?.localDate).toLocaleUpperCase()}
+        </small>
       </div>
       <div className={styles.eventTitle}>{name}</div>
       <div className={styles.status}>{dates.status.code}</div>
