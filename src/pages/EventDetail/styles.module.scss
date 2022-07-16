@@ -1,5 +1,5 @@
 .eventDetail {
-  margin: -30px;
+  margin: -32px;
   .map {
     font-size: 120px;
     color: #4caf50;
@@ -15,13 +15,13 @@
   .infoWrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 16px;
     margin: 10px;
 
     .info {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 16px;
       width: 80%;
 
       .bottomSection {
@@ -31,10 +31,11 @@
         flex-wrap: wrap;
 
         .buttonWrapper {
+          display: flex;
           a {
             background-color: var(--blue);
             color: var(--white);
-            padding: 12px;
+            padding: 8px;
             border-radius: 15px 0px 0px 15px;
 
             &:hover {
@@ -58,27 +59,28 @@
       .genre {
         background-color: var(--yellow);
         color: var(--dark-gray);
-        border-radius: 15px;
+        border-radius: 16px;
         padding: 8px;
       }
 
       .date {
         background-color: var(--light-green);
         color: var(--green);
-        border-radius: 15px;
+        border-radius: 16px;
         padding: 8px;
       }
 
       .time {
         background-color: var(--blue);
         color: var(--gray);
-        border-radius: 15px;
+        border-radius: 16px;
         padding: 8px;
       }
     }
 
     .eventImage {
       max-width: 150px;
+      object-fit: cover;
       width: 100%;
       height: auto;
       border-radius: 10px;

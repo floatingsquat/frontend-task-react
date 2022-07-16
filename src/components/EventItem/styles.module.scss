@@ -9,17 +9,17 @@
   justify-content: space-between;
   background-color: var(--gray);
   padding: 5px 20px;
-  border-radius: 15px;
+  border-radius: 16px;
 
-  gap: 25px;
-  font-size: 15px;
+  gap: 24px;
+  font-size: 16px;
 
   .detailButton {
     background-color: var(--light-green);
     color: var(--green);
-    font-weight: 900;
-    border-radius: 30px;
-    padding: 10px 30px;
+    font-weight: 600;
+    border-radius: 32px;
+    padding: 16px 32px;
     cursor: pointer;
 
     &:hover {
@@ -42,7 +42,7 @@
 
   .fullDate {
     @include flexCenter;
-    gap: 5px;
+    gap: 6px;
     justify-content: center;
     svg {
       color: var(--dark-gray);
@@ -60,13 +60,13 @@
     flex-direction: column;
     justify-content: center;
     background-color: var(--yellow);
-    padding: 5px 8px;
-    margin-right: 15px;
-    border-radius: 15px;
+    padding: 6px 8px;
+    margin-right: 16px;
+    border-radius: 16px;
 
     .numericDate {
-      font-weight: 900;
-      font-size: 23px;
+      font-weight: 600;
+      font-size: 24px;
     }
     small {
       font-size: 12px;
