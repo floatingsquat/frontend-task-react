@@ -17,6 +17,11 @@
     border-radius: 30px;
     padding: 10px 30px;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--darker-green);
+      transition: background-color 0.2s ease-in;
+    }
   }
 
   .status {
@@ -24,6 +29,11 @@
     color: var(--blue);
     padding: 4px;
     border-radius: 10px;
+
+    &:hover {
+      background-color: var(--darker-blue);
+      transition: background-color 0.1s ease-in;
+    }
   }
 
   .fullDate {

@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 
 function Menu() {
+  const [active, setActive] = useState(0);
   return (
     <div className={styles.menu}>
       <ul>
-        <li>
-          <Link to="/">
+        <Link to="/">
+          <li
+            className={`${styles.item} ${active === 0 ? styles.active : ""}`}
+            onClick={() => setActive(0)}
+          >
             <AiFillHome /> Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/about">
+          </li>
+        </Link>
+        <Link to="/about">
+          <li
+            className={`${styles.item} ${active === 1 ? styles.active : ""}`}
+            onClick={() => setActive(1)}
+          >
             <AiFillInfoCircle /> About
-          </Link>
-        </li>
+          </li>
+        </Link>
       </ul>
     </div>
   );

@@ -1,6 +1,11 @@
 .logo {
   width: 100%;
   height: auto;
+  &:hover {
+    transform: scale(1.04);
+    transform: rotate(-1deg);
+    transition: transform 0.1s ease-in-out;
+  }
 }
 @media (max-width: 1180px) {
   .logo {

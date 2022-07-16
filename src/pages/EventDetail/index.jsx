@@ -46,11 +46,14 @@ function EventDetail() {
           </div>
           <div className={styles.tagWrapper}>
             <span className={styles.date}>
-              {formatDate(eventDetails["userData"]?.dates.start.localDate)}
+              {formatDate(eventDetails["userData"]?.dates?.start?.localDate)}
             </span>
             {eventDetails["userData"]?.dates.start.localTime && (
               <span className={styles.time}>
-                {eventDetails["userData"]?.dates.start.localTime}
+                {(eventDetails["userData"]?.dates.start.localTime).substring(
+                  0,
+                  (eventDetails["userData"]?.dates.start.localTime).length - 3
+                )}
               </span>
             )}
             <span className={styles.genre}>
