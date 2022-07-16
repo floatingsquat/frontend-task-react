@@ -12,5 +12,21 @@ export const dayOfDate = (input) => {
 };
 
 export const monthNameOfDate = (input) => {
-  return moment(input).format("MMM");
+  const [year, month, day] = input.split("-");
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let trimmedMonth = month.replace(/^0+/, "");
+  return monthNames[trimmedMonth];
 };
