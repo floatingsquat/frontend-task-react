@@ -41,6 +41,7 @@ function Pagination({
           }`}
           onClick={() => changePage(page)}
           key={page}
+          data-testid="pagination-id"
           disabled={currentPage === page}
         >
           {page}
