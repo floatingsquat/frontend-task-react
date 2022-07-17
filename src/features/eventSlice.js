@@ -65,6 +65,10 @@ const eventSlice = createSlice({
     },
     [getEvents.fulfilled]: (state, action) => {
       state.isLoading = false;
+      // console.log("state.items", state.items);
+      // console.log("action.payload", action.payload);
+      // console.log("dolması gerek, çünkü veriler farklı");
+      // if (!state.items["_embedded"]) { }
       state.items = action.payload;
     },
     [getEvents.rejected]: (state) => {

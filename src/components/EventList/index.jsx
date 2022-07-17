@@ -26,15 +26,14 @@ function EventList() {
 
   return !searchQuery || !eventItems ? (
     <>
-      <h4>Nothing found!</h4>{" "}
+      <h4>Nothing found!</h4>
       <small>
         You may be leaving it blank or what you are looking for does not
         actually exist.
-      </small>{" "}
+      </small>
     </>
   ) : (
     <>
-      {" "}
       <div className={styles.eventList}>
         {eventItems?.map((item) => (
           <EventItem {...item} key={item.id} />
