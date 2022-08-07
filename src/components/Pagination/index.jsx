@@ -77,7 +77,7 @@ function Pagination({
 
       {pages.map((page) => renderPaginationItem(page))}
 
-      <button disabled={currentPage === pages.length} onClick={handleNext}>
+      <button disabled={currentPage === pages.length - 1} onClick={handleNext}>
         Next
       </button>
     </div>
